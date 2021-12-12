@@ -1,7 +1,26 @@
 import React from "react";
 
 import "components/Application.scss";
-import DayListItem from "./DayListItem";
+import DayList from "./DayList";
+const days = [
+  {
+    id: 1,
+    name: "Monday",
+    spots: 2,
+  },
+  {
+    id: 2,
+    name: "Tuesday",
+    spots: 5,
+  },
+  {
+    id: 3,
+    name: "Wednesday",
+    spots: 0,
+  },
+];
+
+
 export default function Application(props) {
   return (
     <main className="layout">
@@ -12,7 +31,10 @@ export default function Application(props) {
           alt="Interview Scheduler"
         />
         <hr className="sidebar__separator sidebar--centered" />
-        <nav className="sidebar__menu"></nav>
+        <nav className="sidebar__menu">
+          <DayList days={days} />                  
+
+        </nav>
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
@@ -20,8 +42,6 @@ export default function Application(props) {
         />      
       </section>
       <section className="schedule">
-        <DayListItem name="Monday" spots={5} setDay={"setDay"}/>
-        <DayListItem name="Tuesday" spots={0} setDay={"setDay"} />
       </section>
     </main>
   );
