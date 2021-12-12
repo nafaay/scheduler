@@ -1,7 +1,7 @@
 import React from "react";
 
 import "components/Application.scss";
-
+import DayListItem from "./DayListItem";
 export default function Application(props) {
   return (
     <main className="layout">
@@ -20,7 +20,8 @@ export default function Application(props) {
         />      
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        <DayListItem name="Monday" spots={5} setDay={"setDay"}/>
+        <DayListItem name="Tuesday" spots={0} setDay={"setDay"} />
       </section>
     </main>
   );
