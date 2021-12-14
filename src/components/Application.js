@@ -45,23 +45,7 @@ const appointments = [
   }
 ];
 
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
+
 
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
@@ -72,19 +56,39 @@ const interviewers = [
 ];
 
 export default function Application(props) {
-  const [days, setDays] = useState({
-    day: "Monday",
-    days: []
-  });
-  const [interviewer, setInterviewer] = useState('');
+  const [day, setDay] = useState("Monday");
+  const [days, setDays] = useState([]);
   useEffect(() => {
-    const testURL = `/api/days`;
-    axios.get(testURL).then(response => {
-      console.log(response.data);
-      setDays(response.data.results);
+    const day = [{
+      id: 1,
+      name: "Monday",
+      spots: 2,
+    },
+    ];
+    setDay(day);
+  }, [])
 
-    });
-  }, []);
+   
+  useEffect(() => {
+    const days = [
+      {
+        id: 1,
+        name: "Monday",
+        spots: 2,
+      },
+      {
+        id: 2,
+        name: "Tuesday",
+        spots: 5,
+      },
+      {
+        id: 3,
+        name: "Wednesday",
+        spots: 0,
+      },
+    ];    
+    setDays(days);
+  }, [])
 
   return (
     <main className="layout">
@@ -92,12 +96,12 @@ export default function Application(props) {
         <img className="sidebar--centered" src="images/logo.png" alt="Interview Scheduler" />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={days} />
+          <DayList days={days} day={day} setDay={setDay} />
         </nav>
         <img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
       </section>
       <section className="schedule">
-        <InterviewerList interviewers={interviewers} interviewer={interviewer} setInterviewer={setInterviewer} />
+        {/* <InterviewerList interviewers={interviewers} interviewer={interviewer} setInterviewer={setInterviewer} /> */}
       </section>
     </main>
   );
