@@ -1,7 +1,6 @@
 
 import { getAppointmentsForDay } from './selectors';
 
-/* will remove interview when interview is set to null */
 export function updateAppointments(state, interview, appointmentId) {
   const newAppointment = {
     ...state.appointments[appointmentId],

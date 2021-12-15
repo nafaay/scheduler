@@ -15,8 +15,6 @@ export default function Application() {
     cancelInterview
   } = useApplicationData();
 
-  /* build schedule */
-
   const schedule = getAppointmentsForDay(state, state.day).map(appointment => {
 
     const passProps = {

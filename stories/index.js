@@ -140,5 +140,69 @@ storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
-  .add("Appointment", () => <Appointment />)
-  .add("Appointment with Time", () => <Appointment time="12pm" />);
+  .add("Appointment", () => <Appointment time='12pm' />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" onAdd={action('onAdd')} />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="12pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
+  .add("Header", () => <Header time='12pm' />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => {
+    const passProps = {
+      student: 'Youssef Nafaa',
+      interviewer,
+      onEdit: action('onEdit'),
+      onDelete: action('onDelete')
+    }
+    return <Show  {...passProps} />
+  })
+  .add("Confirm", () => {
+    const passProps = {
+      message: 'Delete the appointment?',
+      onConfirm: action("onConfirm"),
+      onCancel: action("onCancel")
+    }
+    return <Confirm {...passProps} />
+  })
+  .add('Status/Deleting', () => <Status message='Deleting' />)
+  .add('Status/Saving', () => <Status message='Saving' />)
+  .add('Error', () => {
+    const passProps = {
+      message: 'Could not delete appointment.',
+      onClose: action('onClose')
+    }
+    return <Error {...passProps} />
+  })
+  .add('Form/Create', () => {
+    const passProps = {
+      interviewers,
+      onSave: action('onSave'),
+      onCancel: action('onCancel')
+    }
+    return <Form {...passProps} />;
+  })
+  .add('Form/Edit', () => {
+    const passProps = {
+      name: 'Steven Santucchi',
+      interviewer: 5,
+      interviewers,
+      onSave: action('onSave'),
+      onCancel: action('onCancel')
+    }
+    return <Form {...passProps} />;
+  })
+
+
+
