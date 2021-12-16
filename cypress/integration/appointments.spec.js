@@ -42,7 +42,7 @@ describe("Appointments", () => {
 
     cy.get("[alt='Sylvia Palmer']")
       .click();
-    cy.contains("Save").click();
+    cy.contains("Save").click(); 
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Sylvia Palmer");
   });
