@@ -10,7 +10,8 @@
     "nvm": "^0.0.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^5.0.0",
+    "react-testing-library": "^8.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,6 +51,4 @@
       "<rootDir>/.git/"
     ]
   }
-  
-
 }
