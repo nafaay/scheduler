@@ -15,9 +15,9 @@ export default function useApplicationData () {
   const setDay = day => setState(prev => ({ ...prev, day })); 
 
   useEffect(()=> {
-    const getDays = axios.get('http://localhost:8001/api/days');
-    const getAppointments = axios.get('http://localhost:8001/api/appointments');
-    const getInterviewers = axios.get('http://localhost:8001/api/interviewers');
+    const getDays = axios.get('/api/days');
+    const getAppointments = axios.get('/api/appointments');
+    const getInterviewers = axios.get('/api/interviewers');
     
     Promise.all([getDays, getAppointments, getInterviewers]).then((all) => {
       const [
@@ -35,7 +35,7 @@ export default function useApplicationData () {
     const appointments = updateAppointments(state, interview, appointmentId);
     const days = rectifySpots({ days:state.days, appointments }, appointmentId);
 
-    const url = `http://localhost:8001/api/appointments/${appointmentId}`
+    const url = `/api/appointments/${appointmentId}`
     return axios.put(url, { interview }).then(res => {
       setState(prev => {
         return {...prev, appointments, days};
@@ -48,7 +48,7 @@ export default function useApplicationData () {
     const appointments = updateAppointments(state, null, appointmentId);
     const days = rectifySpots({ days:state.days, appointments }, appointmentId);
 
-    const url = `http://localhost:8001/api/appointments/${appointmentId}`
+    const url = `/api/appointments/${appointmentId}`
     return axios.delete(url).then(res => {
       setState(prev => {
         return {...prev, appointments, days};
