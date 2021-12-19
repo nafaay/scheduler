@@ -11,7 +11,9 @@ export default function useApplicationData () {
     appointments: {}
   };
 
+  // state
   const [state, setState] = useState(initialState);
+  // set the current day
   const setDay = day => setState(prev => ({ ...prev, day })); 
 
   useEffect(()=> {
@@ -30,6 +32,7 @@ export default function useApplicationData () {
     });
   }, []);
 
+  // update the state object 
   const bookInterview = (interview, appointmentId) => {
 
     const appointments = updateAppointments(state, interview, appointmentId);
@@ -43,6 +46,7 @@ export default function useApplicationData () {
     });
   }
 
+  // update state
   const cancelInterview = (appointmentId) => {
 
     const appointments = updateAppointments(state, null, appointmentId);
